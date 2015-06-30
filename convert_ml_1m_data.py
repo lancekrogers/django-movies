@@ -3,7 +3,7 @@ import json
 
 print("Converting users...")
 users = []
-with open("data/ml-1m/users.dat") as infile:
+with open("movieratings/movie-data/users.dat") as infile:
     reader = csv.reader((line.replace("::", ";") for line in infile),
                         delimiter=";")
     for row in reader:
