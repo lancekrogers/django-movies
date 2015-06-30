@@ -62,3 +62,6 @@ target/
 data/
 *.sqlite
 *.sqlite3
+
+fixtures
+movie-data
