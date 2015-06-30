@@ -4,18 +4,18 @@ from django.db import models
 
 class Rater(models.Model):
     #id = models.Field.db_column
-    rater_id = models.IntegerField()
+    rater = models.IntegerField()
 
 
-class Movies(models.Model):
-    movie_id = models.IntegerField()
+class Movie(models.Model):
+    movie = models.IntegerField()
     title = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
 
 
-class Ratings(models.Model):
-    rater_id = models.ForeignKey(Rater)
-    movie_id = models.ForeignKey(Movies)
+class Rating(models.Model):
+    rater = models.ForeignKey(Rater)
+    movie = models.ForeignKey(Movie)
     rating = models.IntegerField(default=0)
     time_stamp = models.DateField()
 
