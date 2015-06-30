@@ -3,7 +3,7 @@ import json
 
 print("Converting users...")
 users = []
-with open("movieratings/movie-data/users.dat") as infile:
+with open("movie-data/users.dat") as infile:
     reader = csv.reader((line.replace("::", ";") for line in infile),
                         delimiter=";")
     for row in reader:
@@ -14,12 +14,12 @@ with open("movieratings/movie-data/users.dat") as infile:
                           "zip_code": row[4]
                       }})
 
-with open("movieratings/fixtures/users.json", "w") as outfile:
+with open("movie-data/users.json", "w") as outfile:
     outfile.write(json.dumps(users))
 
 print("Converting movies...")
 movies = []
-with open("data/ml-1m/movies.dat", encoding="windows-1252") as infile:
+with open("movie-data/movies.dat", encoding="windows-1252") as infile:
     reader = csv.reader((line.replace("::", ";") for line in infile),
                         delimiter=";")
     for row in reader:
@@ -29,12 +29,12 @@ with open("data/ml-1m/movies.dat", encoding="windows-1252") as infile:
                            "title": row[1]
                        }})
 
-with open("movieratings/fixtures/movies.json", "w") as outfile:
+with open("movie-data/movies.json", "w") as outfile:
     outfile.write(json.dumps(movies))
 
 print("Converting ratings...")
 ratings = []
-with open("data/ml-1m/ratings.dat") as infile:
+with open("movie-data/ratings.dat") as infile:
     reader = csv.reader((line.replace("::", ";") for line in infile),
                         delimiter=";")
     for idx, row in enumerate(reader):
@@ -46,7 +46,7 @@ with open("data/ml-1m/ratings.dat") as infile:
                             "rating": row[2]
                         }})
 
-with open("movieratings/fixtures/ratings.json", "w") as outfile:
+with open("movie-data/ratings.json", "w") as outfile:
     outfile.write(json.dumps(ratings))
 
 
