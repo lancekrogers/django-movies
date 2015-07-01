@@ -63,5 +63,5 @@ data/
 *.sqlite
 *.sqlite3
 
-movieratings/fixtures
+movieratings/ratings/fixtures
 movie-data
