@@ -15,7 +15,9 @@ def load_rating_data(apps, schema_editor):
         rating_obj = row[1]
         raters = Rater.objects.get(rater=rating_obj.rater_id)
         movies = Movie.objects.get(movie=rating_obj.movie_id)
-        Rating.objects.create(rater=raters, movie=movies, rating=rating_obj.rating)
+        Rating.objects.create(rater=raters, movie=movies, rating=rating_obj.rating, time_stamp=rating_obj.time_stamp)
+
+
 
 
 
@@ -27,5 +29,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-          ('ratings', '0010_auto_20150701_1524'),
+          migrations.RunPython(load_rating_data)
     ]
