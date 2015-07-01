@@ -6,7 +6,7 @@ from ratings.models import Rater, Movie, Rating
 import pandas as pd
 
 def load_movie_data(apps, schema_editor):
-    movie_df = pd.read_csv('fixtures/movies.csv', names=["movie_id", "title", "genre"])
+    movie_df = pd.read_csv('movieratings/fixtures/movies.csv', names=["movie_id", "title", "genre"])
     movie_df.fillna(' ', inplace=True)
 
     for row in movie_df.iterrows():
@@ -14,9 +14,8 @@ def load_movie_data(apps, schema_editor):
         movie_instance = Movie.objects.create(movie_id=movie_obj.movie_id, title=movie_obj.title, genre=movie_obj.genre)
         movie_instance.save()
 
-
 def load_rater_data(apps, schema_editor):
-    rater_df = pd.read_csv('fixtures/users.csv', names=["rater_id", "gender", "age", "job", "zipcode"])
+    rater_df = pd.read_csv('movieratings/fixtures/users.csv', names=["rater_id", "gender", "age", "job", "zipcode"])
     rater_df.fillna(' ', inplace=True)
 
     for row in rater_df.iterrows():
@@ -32,7 +31,7 @@ def load_rater_data(apps, schema_editor):
 
 
 def load_rating_data(apps, schema_editor):
-    rating_df = pd.read_csv('fixtures/ratings.csv', names=["rater_id", "movie_id", "rating", "time_stamp"])
+    rating_df = pd.read_csv('movieratings/fixtures/ratings.csv', names=["rater_id", "movie_id", "rating", "time_stamp"])
     rating_df.fillna(' ', inplace=True)
 
     for row in rating_df.iterrows():
