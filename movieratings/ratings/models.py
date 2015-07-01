@@ -9,11 +9,17 @@ class Rater(models.Model):
     job = models.IntegerField()
     zipcode = models.CharField(max_length=20)
 
+    def __str__(self):
+        return '{}-{}-{}-{}'.format(self.rater, self.gender, self.age, self.job)
+
 
 class Movie(models.Model):
     movie = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
+
+    def __str__(self):
+        return '{}'.format(self.title)
 
 
 class Rating(models.Model):
@@ -21,4 +27,7 @@ class Rating(models.Model):
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(default=0)
     time_stamp = models.BigIntegerField()
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.rater, self.movie.title, self.rating)
 
