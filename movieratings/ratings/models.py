@@ -20,4 +20,5 @@ class Rating(models.Model):
     rater = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(default=0)
+    time_stamp = models.BigIntegerField()
 
