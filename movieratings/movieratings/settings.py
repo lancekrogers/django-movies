@@ -103,6 +103,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-FIXTURE_DIRS = (
-   'Django_Movies/django-movies/fixtures',
-)
