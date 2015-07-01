@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 
-from ratings.models import Movie, Rater, Rating
+from ratings.models import Movie
 import pandas as pd
 
 def load_movie_data(apps, schema_editor):
