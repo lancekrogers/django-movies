@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 
 class Rater(models.Model):
-    #id = models.Field.db_column
     rater = models.IntegerField(primary_key=True)
     gender = models.CharField(max_length=6, default=None)
     age = models.IntegerField(default=None)
