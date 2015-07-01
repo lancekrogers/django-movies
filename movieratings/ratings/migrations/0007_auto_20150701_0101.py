@@ -5,13 +5,14 @@ from ratings.models import Movie, Rater, Rating
 import pandas as pd
 
 def load_movie_data(apps, schema_editor):
-    movie_df = pd.read_csv('movieratings/fixtures/movies.csv', names=["id", "title", "genre"])
+    movie_df = pd.read_csv('ratings/fixtures/movies.csv', names=["id", "title", "genre"])
     for row in movie_df.iterrows():
         movie_obj = row[1]
         Movie.objects.create(id=movie_obj.id, title=movie_obj.title, genre=movie_obj.genre)
 
+
 def load_rater_data(apps, schema_editor):
-    rater_df = pd.read_csv('movieratings/fixtures/users.csv', names=["id", "gender", "age", "job", "zipcode"])
+    rater_df = pd.read_csv('ratings/fixtures/users.csv', names=["id", "gender", "age", "job", "zipcode"])
 
     for row in rater_df.iterrows():
         rater_obj = row[1]
@@ -22,11 +23,12 @@ def load_rater_data(apps, schema_editor):
             job=rater_obj.job,
             zipcode=rater_obj.zipcode
         )
+    raise Exception()
 
 
 
 def load_rating_data(apps, schema_editor):
-    rating_df = pd.read_csv('movieratings/fixtures/ratings.csv', names=["rater", "movie", "rating"])
+    rating_df = pd.read_csv('ratings/fixtures/ratings.csv', names=["rater", "movie", "rating"])
 
     for row in rating_df.iterrows():
         rating_obj = row[1]
@@ -37,6 +39,7 @@ def load_rating_data(apps, schema_editor):
         if rating_obj.movie:
             movie_id = Movie.objects.get(movie=rating_obj.id)
             Rating.movie_id = movie_id
+    raise Exception()
 
 
 

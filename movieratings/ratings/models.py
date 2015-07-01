@@ -11,6 +11,7 @@ class Rater(models.Model):
 
 
 class Movie(models.Model):
+    movie = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
 
