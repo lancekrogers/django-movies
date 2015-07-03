@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from ratings import views as rat_views
 
 urlpatterns = [
-
+    url(r'^$', rat_views.movie_list),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
