@@ -1,5 +1,5 @@
 from django.db import models
-
+from statistics import mean
 # Create your models here.
 
 class Rater(models.Model):
@@ -17,10 +17,12 @@ class Movie(models.Model):
     movie = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
-    avg_rating = models.FloatField()
+
 
     def __str__(self):
         return '{}'.format(self.title)
+
+
 
 
 class Rating(models.Model):
@@ -31,4 +33,12 @@ class Rating(models.Model):
 
     def __str__(self):
         return '{}-{}-{}'.format(self.rater, self.movie.title, self.rating)
+
+
+class AvgMovRating(models.Model):
+    movie = models.ForeignKey(Movie)
+    avg = models.FloatField()
+
+    def __str__(self):
+        return '{}-{}'.format(self.movie, self.avg)
 
