@@ -16,13 +16,12 @@ def populate_avg(apps, schema_editor):
         try:
             rat = mean(rat_list)
             rating = round(rat, 2)
-            Movie.objects.create(avg_rating=rating)
         except:
             rating = 0
-            Movie.objects.create(avg_rating=rating)
+        Movie.objects.create(avg_rating=rating)
+        print(Movie.objects.avg_rating)
+    raise Exception()
 
-
-  
 
 
 
