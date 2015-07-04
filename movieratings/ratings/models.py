@@ -17,8 +17,7 @@ class Movie(models.Model):
     movie = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
-
-
+    
     def __str__(self):
         return '{}'.format(self.title)
 

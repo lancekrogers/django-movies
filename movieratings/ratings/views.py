@@ -6,19 +6,25 @@ from django.template import RequestContext
 from ratings.models import Movie, AvgMovRating, Rating, Rater
 # Create your views here.
 
-def movie_list(request):
-    movies = Movie.objects.all()
-    context = {'title': movies}
-    return rtr('movie_list.html', context)
+
+
+def movie_page(request, movie_id):
+    return HttpResponse("Individual Movie Page")
+
+
+def all_movies(request):
+    return HttpResponse("I am a place where all the movies hang out")
+
+
+def rater_page(request, rater_id):
+    return HttpResponse("I am a an individual, I am also a rater.")
+
+
+def all_raters(request):
+    return HttpResponse("I am a place where all the raters hang out")
+
 
 def top_twenty_ratings(request):
-    pass
+    top_list = AvgMovRating.objects.order_by('avg')[:20]
 
-
-def movie(request, movie_id):
-    pass
-
-
-def rater_page(request):
-    pass
-
+    return HttpResponse('top twenty movies go here')

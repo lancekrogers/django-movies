@@ -19,7 +19,11 @@ from ratings import views as rat_views
 from django.core.urlresolvers import reverse_lazy
 
 urlpatterns = [
-    url(r'^$', rat_views.movie_list, name='movie_list'),
+    url(r'^movie/(?P<movie_id>\d+)/', rat_views.movie_page, name='single-movie-page'),
+    url(r'^movie/', rat_views.all_movies, name='all-movies-pages'),
+    url(r'^movie/(?P<movie_id>\d+)/', rat_views.rater_page, name='single-rater-page'),
+    url(r'^movie/(?P<movie_id>\d+)/', rat_views.all_raters, name='rater-hangout'),
+    url(r'^top-movies/', rat_views.top_twenty_ratings, name='best-movies'),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
