@@ -26,5 +26,5 @@ def all_raters(request):
 
 def top_twenty_ratings(request):
     top_list = AvgMovRating.objects.order_by('avg')[:20]
-
+    x = 10
     return HttpResponse('top twenty movies go here')
