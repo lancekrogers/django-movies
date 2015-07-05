@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 
 from ratings.models import Movie, AvgMovRating, Rating, Rater
+
 # Create your views here.
 
 
