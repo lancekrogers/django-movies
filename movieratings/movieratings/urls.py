@@ -19,8 +19,8 @@ from ratings import views as rat_views
 from django.core.urlresolvers import reverse_lazy
 
 urlpatterns = [
-    url(r'^[a-z0-9_-]{1,20}', include('ratings.urls', namespace='ratings')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('ratings.urls', namespace='ratings')),
 ]
 
 
