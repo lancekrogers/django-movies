@@ -28,7 +28,7 @@ def rater_page(request, rater_id):
         rater = Rater.objects.get(rater=rater_id)
     except Movie.DoesNotExist:
         raise Http404
-    return render(request, 'ratings/movie_page.html', {'rater': rater})
+    return render(request, 'ratings/rater.html', {'rater': rater})
 
 
 def all_raters(request):
