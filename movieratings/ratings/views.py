@@ -13,26 +13,31 @@ def movie_page(request, movie_id):
     try:
         movie = Movie.objects.get(movie=movie_id)
         title = movie.title
-        movie_title = title.replace(' ', '')
     except Movie.DoesNotExist:
         raise Http404
-    return render(request, 'ratings/movie_page.html', {'movie_id': movie_id, 'movie_title': movie_title})
+    return render(request, 'ratings/movie_page.html', {'movie_id': movie_id, 'movie_title': title})
 
 
 def all_movies(request):
-    return HttpResponse("I am a place where all the movies hang out")
+    all_movs = Movie.objects.all()
+    return render(request, 'ratings/movie_list.html', {'movies': all_movs})
 
 
 def rater_page(request, rater_id):
-    return HttpResponse("I am a an individual, I am also a rater.")
+    try:
+        rater = Rater.objects.get(rater=rater_id)
+    except Movie.DoesNotExist:
+        raise Http404
+    return render(request, 'ratings/movie_page.html', {'rater': rater})
 
 
 def all_raters(request):
-    return HttpResponse("I am a place where all the raters hang out")
+    all_rats = Rater.objects.all()
+    return render(request, 'ratings/raters-list.html', {'raters': all_rats})
 
 
 def top_twenty_ratings(request):
 
     top_list = AvgMovRating.objects.order_by('avg')[:20]
-    x = 10
-    return HttpResponse('top twenty movies go here')
+
+    return render(request, 'ratings/top_twenty.html', {'top-twenty': top_list})
