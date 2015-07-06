@@ -8,14 +8,12 @@ from ratings.models import Movie, AvgMovRating, Rating, Rater
 # Create your views here.
 
 
-
 def movie_page(request, movie_id):
     try:
         movie = Movie.objects.get(movie=movie_id)
-        title = movie.title
     except Movie.DoesNotExist:
         raise Http404
-    return render(request, 'ratings/movie_page.html', {'movie_id': movie_id, 'movie_title': title})
+    return render(request, 'ratings/movie_page.html', {'movie': movie})
 
 
 def all_movies(request):
@@ -38,4 +36,4 @@ def all_raters(request):
 
 def top_twenty_ratings(request):
     top_list = AvgMovRating.objects.order_by('avg')[:20]
-    return render(request, 'ratings/top_twenty.html', {'top-twenty': top_list})
+    return render(request, 'ratings/top_twenty.html', {'top_twenty': top_list})

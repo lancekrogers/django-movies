@@ -1,0 +1,10 @@
+<h1>All Raters Listed</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'ratings:rater-hangout'  %}" method="post">
+{% csrf_token %}
+{% for rat in raters %}
+    <li><a href="{{ rat.rater }}">{{ rat.rater }}</a></li>
+{% endfor %}
+</form>

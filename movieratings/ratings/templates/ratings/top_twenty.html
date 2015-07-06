@@ -1,0 +1,11 @@
+<h1>Top 20 Movies Listed</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'ratings:best-movies'  %}" method="post">
+{% csrf_token %}
+{% for mov in top_twenty %}
+    <li><a href="movies/{{ mov.movie.movie }}">{{ mov.movie.title }}</a></li>
+{% endfor %}
+</form>
+
+
