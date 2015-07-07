@@ -1,4 +1,7 @@
-<h1>All Movies Listed</h1>
+{% extends 'ratings/base.html' %}
+
+{% block body %}
+<h2>All Movies Listed</h2>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -8,5 +11,5 @@
     <li><a href="{{ mov.movie.movie }}">{{ mov.movie.title }}</a></li>
 {% endfor %}
 </form>
-
+{% endblock %}
 

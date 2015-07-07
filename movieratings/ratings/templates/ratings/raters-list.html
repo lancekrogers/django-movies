@@ -1,3 +1,5 @@
+{% extends 'ratings/base.html' %}
+{% block body %}
 <h1>All Raters Listed</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -8,3 +10,4 @@
     <li><a href="{{ rat.rater }}">{{ rat.rater }}</a></li>
 {% endfor %}
 </form>
+{% endblock %}

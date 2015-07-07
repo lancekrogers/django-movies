@@ -1,4 +1,6 @@
-<h1>{{ rater.rater }}</h1>
+{% extends 'ratings/base.html' %}
+{% block body %}
+<h2>{{ rater.rater }}</h2>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -10,8 +12,10 @@
 
 
 {% csrf_token %}
-<h3>Movies Rated by rater {{ rater.rater }}</h3>
+<h3>Movies Rated by rater {{ rater.rater }}:</h3>
 {% for x in rated_movies %}
     <div>Title: <a href="movies/{{ x.movie.movie }}">{{ x.movie.title }}</a></div>
     <div>Rating: {{ x.rating }}</div><br>
 {% endfor %}
+
+{% endblock %}
