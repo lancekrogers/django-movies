@@ -6,7 +6,7 @@ from django.template import RequestContext
 from ratings.forms import RatingForm
 from django.core.urlresolvers import reverse
 from ratings.models import Movie, AvgMovRating, Rating, Rater
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -30,7 +30,8 @@ def movie_page(request, movie_id):
 
 def all_movies(request):
     all_movs = Movie.objects.all()
-    return render(request, 'ratings/movie_list.html', {'movies': all_movs})
+    context = {'movies': all_movs}
+    return render(request, 'ratings/movie_list.html', context)
 
 
 def rater_page(request, rater_id):
@@ -62,6 +63,7 @@ def top_twenty_ratings(request):
     top_list = AvgMovRating.objects.order_by('-avg')[:20]
     return render(request, 'ratings/top_twenty.html', {'top_twenty': top_list})
 
+
 def user_registration(request):
     if request.POST:
         username = request.POST['username']
@@ -77,9 +79,11 @@ def user_registration(request):
             return HttpResponseRedirect("/")
         except ValueError:
             return render_to_response("registration/create_user.html",
-                              {'form': user_form},
-                              context_instance=RequestContext(request))
+                                      {'form': user_form},
+                                      context_instance=RequestContext(request))
 
     return render_to_response("registration/create_user.html",
                               {'form': UserCreationForm()},
                               context_instance=RequestContext(request))
+
+

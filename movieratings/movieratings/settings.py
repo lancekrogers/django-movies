@@ -103,3 +103,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# url to redirect after successfull login
+

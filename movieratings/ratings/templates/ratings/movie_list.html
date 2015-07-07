@@ -5,10 +5,10 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'ratings:all-movies-page'  %}" method="post">
+<form action="{% url 'ratings:all_movies_page' %}" method="post">
 {% csrf_token %}
 {% for mov in movies %}
-    <li><a href="{{ mov.movie.movie }}">{{ mov.movie.title }}</a></li>
+    <li><a href="{{ mov.movie }}">{{ mov.title }}</a></li>
 {% endfor %}
 </form>
 {% endblock %}

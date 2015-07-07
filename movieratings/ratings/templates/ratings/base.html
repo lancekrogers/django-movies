@@ -7,12 +7,14 @@
 <body>
 <h1>Movie Lens Data Set</h1>
 <h2>{{ user.username }}</h2>
-<a href="/">Home</a>
+<a href="/">Top 20 Movies</a><br>
+<a href="{% url 'ratings:all_movies_page' %}">List of All Movies</a><br>
+<a href="{% url 'ratings:rater-hangout' %}">List of All Raters</a><br>
 {% if user.id %}
-<a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'logout' %}">Logout</a>
 {% else %}
-<a href="{% url 'login' %}">Login</a>
-<a href="{% url 'user_registration' %}">Sign up</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'user_registration' %}">Sign up</a>
 {% endif %}
 {% block body %}{% endblock %}
 

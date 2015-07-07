@@ -4,7 +4,7 @@
         {% csrf_token %}
         {{ form.as_table }}
         <button type="submit">Login</button>
-        <input type="hidden" name="next" value='/' />
+        <input type="hidden" name="next" value='{% url "ratings:rater-hangout"  %}' />
     </form>
 
 {% endblock %}
