@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from ratings import views as rat_views
-from django.core.urlresolvers import reverse_lazy
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('ratings.urls', namespace='ratings')),
+
+
 ]
 
 
