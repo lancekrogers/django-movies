@@ -7,3 +7,11 @@
 <p>Occupation Identifier: {{ rater.job }}</p>
 <p>Zipcode: {{ rater.zipcode }}</p>
 
+
+
+{% csrf_token %}
+<h3>Movies Rated by rater {{ rater.rater }}</h3>
+{% for x in rated_movies %}
+    <div>Title: <a href="movies/{{ x.movie.movie }}">{{ x.movie.title }}</a></div>
+    <div>Rating: {{ x.rating }}</div><br>
+{% endfor %}

@@ -11,9 +11,19 @@ from ratings.models import Movie, AvgMovRating, Rating, Rater
 def movie_page(request, movie_id):
     try:
         movie = Movie.objects.get(movie=movie_id)
+        try:
+            avg_rat = AvgMovRating.objects.filter(movie=movie.movie)
+            for mov in avg_rat:
+                rating = mov.avg
+                if rating == 0.0:
+                    a_rat = 'Has no average rating'
+                else:
+                    a_rat = rating
+        except:
+            pass
     except Movie.DoesNotExist:
         raise Http404
-    return render(request, 'ratings/movie_page.html', {'movie': movie})
+    return render(request, 'ratings/movie_page.html', {'movie': movie, 'avg': a_rat})
 
 
 def all_movies(request):
@@ -24,9 +34,10 @@ def all_movies(request):
 def rater_page(request, rater_id):
     try:
         rater = Rater.objects.get(rater=rater_id)
+        rated_mov = Rater.movies_rated(rater)
     except Movie.DoesNotExist:
         raise Http404
-    return render(request, 'ratings/rater.html', {'rater': rater})
+    return render(request, 'ratings/rater.html', {'rater': rater, 'rated_movies': rated_mov})
 
 
 def all_raters(request):

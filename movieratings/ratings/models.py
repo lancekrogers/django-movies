@@ -1,5 +1,4 @@
 from django.db import models
-from statistics import mean
 # Create your models here.
 
 class Rater(models.Model):
@@ -12,6 +11,10 @@ class Rater(models.Model):
     def __str__(self):
         return '{}-{}-{}-{}'.format(self.rater, self.gender, self.age, self.job)
 
+    def movies_rated(self):
+        return Rating.objects.filter(rater=self)
+
+
 
 class Movie(models.Model):
     movie = models.IntegerField(primary_key=True)
@@ -21,7 +24,8 @@ class Movie(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
-
+    def rated_by(self):
+        return Rating.objects.filter(movie=self)
 
 
 class Rating(models.Model):
