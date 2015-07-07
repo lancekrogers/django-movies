@@ -1,19 +1,16 @@
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import login, logout
-from django.core.urlresolvers import reverse_lazy
 from . import views
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
-    url(r'^$', views.top_twenty_ratings, name='best-movies'),
+    url(r'^$', views.top_twenty_ratings, name='best_movies'),
     url(r'^movies/$', views.all_movies, name='all-movies-page'),
     url(r"^movies/(?P<movie_id>[0-9]+)/$", views.movie_page, name='single-movie-page'),
     url(r'^raters/$', views.all_raters, name='rater-hangout'),
     url(r'^raters/(?P<rater_id>[0-9]+)/$', views.rater_page, name='single-rater-page'),
-    url(r'^registration/', views.user_registration, name="user_registration"),
-    url(r'^accounts/login/', login, name="login"),
-    url(r'^logout/', logout, {'next_page': '/'}, name="logout"),
+
 
         ]
 

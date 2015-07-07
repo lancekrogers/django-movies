@@ -46,11 +46,11 @@ def rater_page(request, rater_id):
             form = RatingForm(request.POST, instance=rate_instance)
             if form.is_valid():
                 form.save()
-            return HttpResponseRedirect(reverse("best-movies"))
+            return HttpResponseRedirect(reverse("best_movies"))
 
         form = RatingForm()
         context['form'] = form
-    return render(request, 'ratings/rater.html', context)
+    return render_to_response('ratings/rater.html', context, context_instance=RequestContext(request))
 
 
 def all_raters(request):
